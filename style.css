@@ -1,8 +1,27 @@
-.link-list-item{
-    margin: 1rem;
+body {
+    background-image: url("images/2024_07_Film-09.png"); /* Changed backslashes to forward slashes and added a semicolon */
+    /* background-color: red; */
 }
 
-.link-container{
+.header-wrap{
+    background-color: azure;
+    padding: 3rem;
+    width: 25%;
+    border-radius: 2rem;
+}
+
+.link-container {
     padding: 1rem;
     background-color: antiquewhite;
+    width: 100vw;
+    position: absolute;
+    bottom: 0;
 }
+
+
+
+.link-list-item {
+    margin: 1rem;
+    list-style-type: none;
+}
+
