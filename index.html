@@ -3,49 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>rss</title>
-    <link rel="stylesheet" href="./style.css">
+    <title>Artist Name</title>
+    <style>
+        body {
+            font-family: "Comic Sans MS", cursive, sans-serif;
+            background-color: #ffddff;
+            color: #000;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            background-image: radial-gradient(circle, #ff99cc, #ff66ff, #cc99ff, #6699ff, #66ccff);
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        h1 {
+            color: #ff0066;
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px #ffff66;
+        }
+        h2 {
+            color: #ff66cc;
+            font-size: 2em;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            text-shadow: 1px 1px #66ffff;
+        }
+        p {
+            font-size: 1.2em;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            color: #330066;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+            text-align: center;
+        }
+        li {
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            color: #0000ff;
+            background-color: #ffccff;
+            border-radius: 10px;
+            padding: 10px;
+            display: inline-block;
+            transition: transform 0.2s;
+        }
+        li:hover {
+            transform: scale(1.1);
+            background-color: #ccffcc;
+        }
+        hr {
+            border: 3px solid #00ffcc;
+            margin: 30px 0;
+            border-radius: 5px;
+        }
+        a {
+            color: #ff0066;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            color: #ffcc00;
+            text-decoration: underline;
+        }
+        .content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffeeff;
+            border: 5px solid #ff99ff;
+            border-radius: 20px;
+            box-shadow: 0px 0px 15px #ff66ff;
+        }
+        .footer {
+            margin-top: 40px;
+            font-size: 1em;
+            color: #660066;
+        }
+    </style>
 </head>
 <body>
-    <div class="header-wrap">
-        <h1>Hello, its... me, aka r.ss</h1>
-        <h5>bring back the hand made web mate</h5>
-        <h5>I don't have instagram so this is all you're going to get</h5>
-        <h5>have a look around</h5>
-        <h5>I'm not really sure how to structure all of this yet, so I'm kinda just building as I go. </h5>
-        <div>
-            <ul>
-                <li class="link-list-item">
-                    <a href="news.html">News</a>
-                </li>
-                <li class="link-list-item">
-                    <a href="counterbalance.html">Counterbalance Radio</a>
-                </li>
-                <li class="link-list-item">
-                    <a href="past-events.html">Past Events + Tracklists</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    
+    <div class="content">
+        <h1>Artist Name</h1>
+        <hr>
 
-    
+        <p>Welcome to my official, totally groovy website!</p>
 
-    <div class="link-container">
-        <h6>some more links</h6>
+        <h2>About Me</h2>
+        <p>I'm Artist Name, a musician from [Location]. My music is a cosmic blend of [Genre/Style] with a splash of [Influence/Other Style].</p>
+
+        <h2>Latest News</h2>
+        <p>Get spaced out with my latest release on [Platform], or catch up with me on [Social Media] for more mind-bending updates!</p>
+
+        <h2>Music</h2>
+        <p>Tune in to my music on:</p>
         <ul>
-            
-            <li class="link-list-item">
-                <a target="_blank" href="https://soundcloud.com/aka_r-ss">r.ss (soundcloud)</a>
-            </li>
-            
-            <li class="link-list-item">
-                <a target="_blank" href="https://soundcloud.com/m_a_p_s">m.a.p.s. (soundcloud)</a>
-            </li>
-            <li class="link-list-item">
-                <a target="_blank" href="https://kimochi.bandcamp.com/album/tiwala">Bluets - Tiwala (Kimochi 56)</a>
-            </li>
+            <li><a href="https://soundcloud.com/artistname" target="_blank">SoundCloud</a></li>
+            <li><a href="https://bandcamp.com/artistname" target="_blank">Bandcamp</a></li>
+            <li><a href="https://spotify.com/artistname" target="_blank">Spotify</a></li>
         </ul>
+
+        <h2>Contact</h2>
+        <p>Beam me a message at: <a href="mailto:artistname@example.com">artistname@example.com</a></p>
+
+        <hr>
+
+        <div class="footer">
+            &copy; 2024 Artist Name. All rights reserved. Stay weird!
+        </div>
     </div>
 </body>
 </html>
