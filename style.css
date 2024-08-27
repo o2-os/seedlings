@@ -6,17 +6,18 @@ body {
 .header-wrap{
     background-color: azure;
     padding: 3rem;
-    width: 25%;
+    width: 50%;
     border-radius: 2rem;
-    margin: 3rem;
+    margin: 3rem auto;
 }
 
 .link-container {
     padding: 1rem;
     background-color: antiquewhite;
     width: 100vw;
-    position: absolute;
+    position: fixed;
     bottom: 0;
+    left: 0;
 }
 
 
