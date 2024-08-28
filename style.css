@@ -1,9 +1,9 @@
 body {
-    background-image: url("images/2024_07_Film-09.png"); /* Changed backslashes to forward slashes and added a semicolon */
+    background-image: url("images/2024_07_Film-09.png"); /* Ensure the path is correct */
     /* background-color: red; */
 }
 
-.header-wrap{
+.header-wrap {
     background-color: azure;
     padding: 3rem;
     width: 50%;
@@ -14,16 +14,48 @@ body {
 .link-container {
     padding: 1rem;
     background-color: antiquewhite;
-    width: 100vw;
+    width: 100vw; /* Consider using width: 100%; if you face issues with horizontal scrolling */
     position: fixed;
     bottom: 0;
     left: 0;
 }
-
-
 
 .link-list-item {
     margin: 1rem;
     list-style-type: none;
 }
 
+.link-list-item a:visited {
+    color: indianred;
+    
+    text-decoration: none;
+}
+
+/* Updated styles for the hiding class */
+.hiding {
+    opacity: 0; /* Correctly hides the element while keeping it in the layout */
+    background-color: yellow; /* Example for visibility testing */
+    padding: 10px;
+    border: 1px solid red;
+    transition: opacity 0.3s ease, transform 0.6s ease; /* Smooth transitions for opacity and zoom effect */
+}
+
+.hiding:hover {
+    opacity: 1; /* Reveals the element when hovered */
+    visibility: visible; /* Ensures the element is visible during hover */
+    /* transform: scale(1.5); Slight zoom effect */
+}
+
+/* Styles for links */
+a {
+    display: inline-block; /* Needed for transform to work */
+    transition: transform 0.6s ease; /* Smooth transition for the zoom effect */
+    text-decoration: none;
+}
+
+a:hover {
+    background-color: rgb(0, 110, 255); /* Background color on hover */
+    transform: scale(1.5); /* Slight zoom effect */
+    padding: 1rem;
+    color: black;
+}
