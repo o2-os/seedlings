@@ -1,5 +1,11 @@
+html *
+{
+    /* font-size: 1em !important; */
+    font-family: 'Roboto Mono', monospace;
+    color: #515be5
+}
+
 body {
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     /* background-image: url("images/2024_07_Film-09.png"); Ensure the path is correct */
     /* background-color: red; */
 }
