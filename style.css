@@ -1,14 +1,19 @@
-html *
+/* html *
 {
-    /* font-size: 1em !important; */
     font-family: 'Roboto Mono', monospace;
     color: #515be5
-}
+} */
 
 body {
-    /* background-image: url("images/2024_07_Film-09.png"); Ensure the path is correct */
-    /* background-color: red; */
-}
+    background-color:#222;
+    max-width:800px;
+    color:#fff;
+    line-height: 1.6;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.0em;
+    margin:40px auto;
+    padding: 0 10px;
+    }
 
 ul{
     margin: 0;
