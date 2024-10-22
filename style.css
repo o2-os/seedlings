@@ -1,7 +1,6 @@
 /* html *
 {
-    font-family: 'Roboto Mono', monospace;
-    color: #515be5
+   margin: 0 auto;
 } */
 
 body {
@@ -20,32 +19,20 @@ ul{
     padding: 0;
 }
 
-.header-wrap {
-    /* background-color: azure; */
+/* .header-wrap {
     padding: 3rem;
     width: 50%;
-    /* border-radius: 2rem; */
     margin: 3rem auto;
-    /* border: 2px solid #83baff; */
-}
+} */
 
-.link-container {
-    padding: 1rem;
-    background-color: #dad7fa;
-    width: 100vw; /* Consider using width: 100%; if you face issues with horizontal scrolling */
-    position: fixed;
-    bottom: 0;
-    left: 0;
-}
 
 .link-list-item {
-    margin: 1rem;
     list-style-type: none;
+    margin-top: 1rem;
 }
 
 .link-list-item a:visited {
-    color: #00aaff;
-    
+    color: #d3321d;
     text-decoration: none;
 }
 
@@ -69,10 +56,11 @@ a {
     display: inline-block; /* Needed for transform to work */
     transition: transform 0.6s ease; /* Smooth transition for the zoom effect */
     text-decoration: none;
+    color: whitesmoke
 }
 
 a:hover {
-    background-color: rgb(0, 110, 255); /* Background color on hover */
+    background-color: rgb(173, 186, 202); /* Background color on hover */
     transform: scale(1.5); /* Slight zoom effect */
     padding: 1rem;
     color: black;
