@@ -19,6 +19,10 @@ ul{
     padding: 0;
 }
 
+li{
+    list-style: none;
+}
+
 /* .header-wrap {
     padding: 3rem;
     width: 50%;
