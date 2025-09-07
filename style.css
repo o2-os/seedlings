@@ -44,7 +44,7 @@ li{
 /* Updated styles for the hiding class */
 .hiding {
     opacity: 0; /* Correctly hides the element while keeping it in the layout */
-    background-color: yellow; /* Example for visibility testing */
+    /*background-color: yellow; */ /* Example for visibility testing */
     padding: 10px;
     border: 1px solid red;
     /*transition: opacity 0.3s ease, transform 0.6s ease; */ /* Smooth transitions for opacity and zoom effect */
