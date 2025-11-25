@@ -70,3 +70,7 @@ a:hover {
     /* padding: 1rem; */
     color: black;
 }
+
+a:visited{
+   color: inherit;
+}
