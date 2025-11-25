@@ -37,7 +37,7 @@ li{
 }
 
 .link-list-item a:visited {
-    color: #d3321d;
+    /* color: #d3321d; */
     text-decoration: none;
 }
 
@@ -71,6 +71,3 @@ a:hover {
     color: black;
 }
 
-a:visited{
-   color: inherit;
-}
