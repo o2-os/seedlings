@@ -65,8 +65,8 @@ a {
 }
 
 a:hover {
-    background-color: white; /* Background color on hover */
-    transform: scale(1.5); /* Slight zoom effect */
-    padding: 1rem;
+    /* background-color: white; /* Background color on hover */ */
+    transform: scale(1.25); /* Slight zoom effect */
+    /* padding: 1rem; */
     color: black;
 }
