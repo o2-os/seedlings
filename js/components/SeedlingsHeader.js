@@ -45,8 +45,9 @@ template.innerHTML = `
       <ul>
         <li><a href="#">Tapes</a></li>
         <li><a href="#">Mxz</a></li>
-        <li><a href="#">Radio</a></li>
+        <li><a href="https://datafruits.fm/shows/counterbalance">Radio</a></li>
         <li><a href="#">Shop</a></li>
+        <li><a href="https://www.discogs.com/seller/cb.r1919/profile">Discogs Store</a></li>
       </ul>
     </nav>
   </header>

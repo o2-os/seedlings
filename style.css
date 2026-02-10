@@ -74,3 +74,56 @@ h1 {
     .container { padding: 2rem 1rem; }
 }
 
+/* Container takes up the full viewport */
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden; /* Prevents video from spilling out */
+}
+
+/* Video sits behind everything */
+.bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Keeps aspect ratio while filling space */
+    z-index: -1; /* Pushes video to the back */
+}
+
+/* Content sits on top */
+.content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: white;
+    text-align: center;
+}
+
+
+#shop-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;    /* This centers the cards horizontally in a column */
+  width: 100%;            /* Ensures the container spans the whole page */
+  gap: 40px;
+}
+
+shop-item {
+    width: 100%;
+    display: block; 
+}
+
+

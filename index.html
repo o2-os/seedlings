@@ -6,7 +6,16 @@
     <title>seedlings</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="images\favicon_io\favicon-16x16.png">
-    <script type="module" src="./js/components/Header.js"></script>
+    <style>
+      body {
+        background-image: url("/images/IMG_0324.jpg");
+        background-repeat: no-repeat; /* Prevents the image from repeating */
+        background-size: cover;      /* Scales the image to cover the entire container */
+        background-attachment: fixed;/* Fixes the image position during scrolling */
+        background-color: #cccccc;   /* Sets a background color if the image can't load */
+      }
+    </style>
+    <script type="module" src="./js/components/AbstractHeader.js"></script>
 </head>
 <body>
     <div>
