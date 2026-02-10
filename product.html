@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <seedlings-header></seedlings-header>
+    
+    <main id="product-display" style="max-width: 800px; margin: 100px auto; display: flex; gap: 50px;">
+        <img id="p-img" src="" style="width: 50%; aspect-ratio: 1/1; object-fit: cover;">
+        <div>
+            <h1 id="p-name">Loading...</h1>
+            <p id="p-price" style="font-size: 1.5rem; color: #666;"></p>
+            <p id="p-desc" style="line-height: 1.6; margin: 20px 0;"></p>
+            <button style="padding: 15px 30px; background: black; color: white; border: none; cursor: pointer;">
+                Add to Cart
+            </button>
+        </div>
+    </main>
+
+    <script type="module">
+        import { products } from './js/products.js';
+
+        // 1. Get the ID from the URL (e.g., ?id=watch)
+        const params = new URLSearchParams(window.location.search);
+        const productId = params.get('id');
+
+        // 2. Look up the product data
+        const item = products[productId];
+
+        if (item) {
+            // 3. Fill the page with data
+            document.getElementById('p-name').innerText = item.name;
+            document.getElementById('p-price').innerText = item.price;
+            document.getElementById('p-desc').innerText = item.description;
+            document.getElementById('p-img').src = item.img;
+            document.title = item.name + " | Seedlings";
+        } else {
+            document.body.innerHTML = "<h1>Product not found</h1><a href='index.html'>Back to Shop</a>";
+        }
+    </script>
+</body>
+</html>
