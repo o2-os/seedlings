@@ -37,18 +37,22 @@ template.innerHTML = `
     }
   </style>
   <header>
-    <div class="logo">abstract garden</div>
+    <div class="logo">
+      <a style="text-decoration: none; color: #333" href="./index.html">seedlings
+      </a>
+      </div>
     <nav>
       <ul>
-        <li><a href="https://spiralingpress.com">press</a></li>
-        <li><a href="seedlings.html">music</a></li>
-        <li><a href="https://www.ebay.com/usr/abstractvintage">vintage</a></li>
+        <li><a href="#">Tapes</a></li>
+        <li><a href="#">Mxz</a></li>
+        <li><a href="#">Radio</a></li>
+        <li><a href="#">Shop</a></li>
       </ul>
     </nav>
   </header>
 `;
 
-class MainHeader extends HTMLElement {
+class SeedlingsHeader extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
@@ -56,4 +60,4 @@ class MainHeader extends HTMLElement {
   }
 }
 
-customElements.define('main-header', MainHeader);
+customElements.define('seedlings-header', SeedlingsHeader);

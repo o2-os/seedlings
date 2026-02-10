@@ -1,73 +1,76 @@
-/* html *
-{
-   margin: 0 auto;
-} */
+/* style.css */
 
-body {
-    background-color:#bdc8e8;
-    max-width:800px;
-    color:#black;
-    line-height: 1.6;
-    /*font-family: 'Roboto Mono', monospace;*/
-    font-family: Arial;
-    font-size: 1.0em;
-    margin:40px auto;
-    padding: 0 10px;
-    }
-
-ul{
+/* Global Reset */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-li{
-    list-style: none;
+body {
+    /*font-family: 'Inter', -apple-system, sans-serif; /* Modern sans-serif stack */*/
+    font-family: "Arizona Serif Variable"; 
+    background-color: #f9f9f3;
+    color: #1a1a1a;
+    line-height: 1.6;
 }
 
-/* .header-wrap {
-    padding: 3rem;
-    width: 50%;
-    margin: 3rem auto;
-} */
-
-
-.link-list-item {
-    list-style-type: none;
-    margin-top: 1rem;
+/* Container for all content */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
 }
 
-.link-list-item a:visited {
-    /* color: #d3321d; */
-    text-decoration: none;
+/* Headings */
+h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 2rem;
+    text-align: center;
 }
 
-/* Updated styles for the hiding class */
-.hiding {
-    opacity: 0; /* Correctly hides the element while keeping it in the layout */
-    /*background-color: yellow; */ /* Example for visibility testing */
-    padding: 10px;
-    border: 1px solid red;
-    /*transition: opacity 0.3s ease, transform 0.6s ease; */ /* Smooth transitions for opacity and zoom effect */
+/* Product Grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    margin-top: 3rem;
 }
 
-.hiding:hover {
-    opacity: 1; /* Reveals the element when hovered */
-    visibility: visible; /* Ensures the element is visible during hover */
-    /* transform: scale(1.5); Slight zoom effect */
+/* Individual Product Card */
+.product-card {
+    text-align: center;
+    cursor: pointer;
 }
 
-/* Styles for links */
-a {
-    display: inline-block; /* Needed for transform to work */
-    transition: transform 0.6s ease; /* Smooth transition for the zoom effect */
-    text-decoration: none;
-    color: whitesmoke
+.product-card img {
+    width: 100%;
+    height: auto;
+    background-color: #f6f6f6; /* Placeholder for missing images */
+    transition: opacity 0.3s ease;
 }
 
-a:hover {
-    /* background-color: white; /* Background color on hover */ */
-    transform: scale(1.25); /* Slight zoom effect */
-    /* padding: 1rem; */
-    color: black;
+.product-card:hover img {
+    opacity: 0.8;
+}
+
+.product-title {
+    margin-top: 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.product-price {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    h1 { font-size: 2rem; }
+    .container { padding: 2rem 1rem; }
 }
 
