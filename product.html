@@ -1,18 +1,21 @@
+<!-- product.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <link rel="stylesheet" href="style.css">
+    <script type="module" src="./js/components/SeedlingsHeader.js"></script>
 </head>
 <body>
     <seedlings-header></seedlings-header>
     
-    <main id="product-display" style="max-width: 800px; margin: 100px auto; display: flex; gap: 50px;">
-        <img id="p-img" src="" style="width: 50%; aspect-ratio: 1/1; object-fit: cover;">
-        <div>
+    <main id="product-content" style="max-width: 900px; margin: 80px auto; display: flex; gap: 40px; padding: 20px;">
+        <img id="p-img" src="" style="width: 50%; aspect-ratio: 1/1; object-fit: cover; background: #eee;">
+        <div style="flex: 1;">
             <h1 id="p-name">Loading...</h1>
-            <p id="p-price" style="font-size: 1.5rem; color: #666;"></p>
-            <p id="p-desc" style="line-height: 1.6; margin: 20px 0;"></p>
-            <button style="padding: 15px 30px; background: black; color: white; border: none; cursor: pointer;">
+            <p id="p-price" style="font-size: 1.5rem; margin: 10px 0; color: #444;"></p>
+            <hr>
+            <p id="p-desc" style="line-height: 1.6; color: #666; margin: 20px 0;"></p>
+            <button style="padding: 15px 40px; background: #000; color: #fff; border: none; cursor: pointer;">
                 Add to Cart
             </button>
         </div>
@@ -21,22 +24,27 @@
     <script type="module">
         import { products } from './js/products.js';
 
-        // 1. Get the ID from the URL (e.g., ?id=watch)
+        // 1. Grab the ID from the URL (e.g., ?id=backpack)
         const params = new URLSearchParams(window.location.search);
         const productId = params.get('id');
 
-        // 2. Look up the product data
-        const item = products[productId];
+        // 2. Find the product in your array
+        const item = products.find(p => p.id === productId);
 
+        // 3. Inject the data into the page
         if (item) {
-            // 3. Fill the page with data
             document.getElementById('p-name').innerText = item.name;
             document.getElementById('p-price').innerText = item.price;
             document.getElementById('p-desc').innerText = item.description;
             document.getElementById('p-img').src = item.img;
-            document.title = item.name + " | Seedlings";
+            document.title = `${item.name} | Seedlings`;
         } else {
-            document.body.innerHTML = "<h1>Product not found</h1><a href='index.html'>Back to Shop</a>";
+            // Fallback if product doesn't exist
+            document.getElementById('product-content').innerHTML = `
+                <div style="text-align:center; width:100%;">
+                    <h2>Product not found</h2>
+                    <a href="index.html">Return to Shop</a>
+                </div>`;
         }
     </script>
 </body>
