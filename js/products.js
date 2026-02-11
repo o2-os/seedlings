@@ -8,10 +8,10 @@ export const products = [
     img: "./images/IMG_1319.jpg" 
   },
   {
-    id: "backpack",
-    name: "Leather Backpack",
-    price: "$85.00",
-    description: "Durable, stylish, and perfect for your daily commute.",
+    id: "seedling001",
+    name: "o2.os - Start Where You Are",
+    price: "$8",
+    description: "",
     img: "https://images.unsplash.com"
   }
 ];
