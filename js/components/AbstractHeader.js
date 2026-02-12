@@ -37,7 +37,10 @@ template.innerHTML = `
     }
   </style>
   <header>
-    <div class="logo">abstract garden</div>
+    <div class="logo">
+      <a style="text-decoration: none; color: #333" href="./index.html">abstract vintage
+      </a>
+      </div>
     <nav>
       <ul>
         <li><a href="https://spiralingpress.com">press</a></li>
