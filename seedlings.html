@@ -13,27 +13,19 @@
 </head>
 <body>
     <seedlings-header></seedlings-header>
-    <img style="width: 100%;" src="images\seedlings.png">
+    <img style="width: 75%;" src="images\seedlings.png">
     
     <div class="content">
-        <h1>Seedlings</h1>
-        <h2>DigitalOcean Spaces Audio Test</h2>
-            <!-- The NEW visible audio player interface -->
-<audio id="globalPlayer" controls></audio> 
-
-<div class="content">
-    <!-- List of available tracks -->
-    <h3>Available Tracks</h3>
-    <ul>
-        <li onclick="queueTrack('Spiritworld.wav')">Spiritworld (4:32)</li>
-        <li onclick="queueTrack('AnotherSong.mp3')">Another Song (3:15)</li>
-    </ul>
-    <p>Now Playing: <span id="nowPlayingTitle">None</span></p>
-</div>
-
+        <audio id="globalPlayer" controls></audio> 
+        <div class="content">
+            <!-- List of available tracks -->
+            <h3>Available Tracks</h3>
+            <ul>
+                <li onclick="queueTrack('Spiritworld.wav')">Spiritworld (4:32)</li>
+                <li onclick="queueTrack('AnotherSong.mp3')">Another Song (3:15)</li>
+            </ul>
+            <p>Now Playing: <span id="nowPlayingTitle">None</span></p>
+        </div>
     </div>
-
-</div>
-
 </body>
 </html>
