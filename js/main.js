@@ -3,20 +3,16 @@ import './components/ShopItem.js'; // Ensure the component is registered
 
 const shopGrid = document.getElementById('shop-grid');
 
-// Loop through every item in your JS file
-products.forEach(item => {
-  // Create the element
-  const card = document.createElement('shop-item');
-  
-  // Set the attributes from the data
-  card.setAttribute('name', item.name);
-  card.setAttribute('bio', item.price);
-  card.setAttribute('img', item.img);
-  card.setAttribute('url', `product.html?id=${item.id}`);
-
-  // Toss it into the page
-  shopGrid.appendChild(card);
-});
+if (shopGrid) { // Only run this if the element actually exists on the current page
+    products.forEach(item => {
+      const card = document.createElement('shop-item');
+      card.setAttribute('name', item.name);
+      card.setAttribute('bio', item.price);
+      card.setAttribute('img', item.img);
+      card.setAttribute('url', `product.html?id=${item.id}`);
+      shopGrid.appendChild(card);
+    });
+}
 
 async function handlePlay(fileName) {
     const status = document.getElementById('statusMessage');
@@ -25,7 +21,7 @@ async function handlePlay(fileName) {
 
     try {
         // Use your full function URL here
-        const funcUrl = "https://faas-nyc1-2ef2e6cc.doserverless.co";
+        const funcUrl = "https://faas-nyc1-2ef2e6cc.doserverless.co/api/v1/web/fn-fa14d4b3-aac1-4753-98dc-a13f0c4e721d/default/library-connect";
         
         const response = await fetch(`${funcUrl}?fileName=${encodeURIComponent(fileName)}`);
         const data = await response.json();
@@ -45,3 +41,5 @@ async function handlePlay(fileName) {
         console.error("Fetch Error:", err);
     }
 }
+
+window.handlePlay = handlePlay;
