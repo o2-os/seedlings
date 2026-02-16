@@ -1,9 +1,8 @@
 import { products } from './products.js';
-import './components/ShopItem.js'; // Ensure the component is registered
+import './components/ShopItem.js'; 
 
 const shopGrid = document.getElementById('shop-grid');
-
-if (shopGrid) { // Only run this if the element actually exists on the current page
+if (shopGrid) {
     products.forEach(item => {
       const card = document.createElement('shop-item');
       card.setAttribute('name', item.name);
@@ -14,13 +13,16 @@ if (shopGrid) { // Only run this if the element actually exists on the current p
     });
 }
 
+// --- NEW PLAYER CONSTANTS ---
 const player = document.getElementById('globalPlayer');
 const nowPlayingTitle = document.getElementById('nowPlayingTitle');
-const funcUrl = "https://faas-nyc1-2ef2e6cc.doserverless.co";
+const playBtn = document.getElementById('playPauseBtn');
+const seekSlider = document.getElementById('seekSlider');
+const funcUrl = "https://faas-nyc1-2ef2e6cc.doserverless.co/api/v1/web/fn-fa14d4b3-aac1-4753-98dc-a13f0c4e721d/default/library-connect";
 
-// Function to fetch the secure URL and load it into the player
+// UPDATED: Fetches secure URL and updates the custom UI
 async function queueTrack(fileName) {
-    nowPlayingTitle.innerText = `Loading ${fileName}...`;
+    if (nowPlayingTitle) nowPlayingTitle.innerText = `Loading ${fileName}...`;
     
     try {
         const response = await fetch(`${funcUrl}?fileName=${encodeURIComponent(fileName)}`);
@@ -28,25 +30,57 @@ async function queueTrack(fileName) {
 
         if (data.url) {
             player.src = data.url;
-            player.play(); // Start playing immediately
-            nowPlayingTitle.innerText = fileName; // Update UI with current track
+            player.play(); 
+            
+            // UI Updates
+            if (nowPlayingTitle) nowPlayingTitle.innerText = fileName;
+            if (playBtn) {
+                playBtn.disabled = false;
+                playBtn.innerText = "Pause";
+            }
             console.log("Player updated with secure stream.");
         } else {
             console.error("Bouncer error:", data.error);
-            nowPlayingTitle.innerText = "Error loading track.";
+            if (nowPlayingTitle) nowPlayingTitle.innerText = "Error loading track.";
         }
     } catch (err) {
         console.error("Connection error:", err);
-        nowPlayingTitle.innerText = "Network error.";
+        if (nowPlayingTitle) nowPlayingTitle.innerText = "Network error.";
     }
 }
 
-// Optional: Add event listeners for better UX
+// --- NEW CUSTOM UI FUNCTIONS ---
+
+// Toggles between play and pause states
+function togglePlay() {
+    if (player.paused) {
+        player.play();
+        playBtn.innerText = "Pause";
+    } else {
+        player.pause();
+        playBtn.innerText = "Play";
+    }
+}
+
+// Updates the slider as the song plays
+if (player && seekSlider) {
+    player.ontimeupdate = () => {
+        const progress = (player.currentTime / player.duration) * 100;
+        seekSlider.value = progress || 0;
+    };
+
+    // Allows user to drag the slider to change time
+    seekSlider.oninput = () => {
+        const time = (seekSlider.value / 100) * player.duration;
+        player.currentTime = time;
+    };
+}
+
 player.addEventListener('error', (event) => {
     console.error("Audio player error:", event.target.error.code);
-    nowPlayingTitle.innerText = "Playback error.";
+    if (nowPlayingTitle) nowPlayingTitle.innerText = "Playback error.";
 });
 
-// Since we have a 'queue' system now, we don't use window.handlePlay anymore:
-window.queueTrack = queueTrack; // Expose the new function globally
-
+// EXPOSE TO HTML
+window.queueTrack = queueTrack;
+window.togglePlay = togglePlay;

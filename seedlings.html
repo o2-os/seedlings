@@ -14,18 +14,31 @@
 <body>
     <seedlings-header></seedlings-header>
     <img style="width: 75%;" src="images\seedlings.png">
-    
     <div class="content">
-        <audio id="globalPlayer" controls></audio> 
-        <div class="content">
-            <!-- List of available tracks -->
-            <h3>Available Tracks</h3>
-            <ul>
-                <li onclick="queueTrack('Spiritworld.wav')">Spiritworld (4:32)</li>
-                <li onclick="queueTrack('AnotherSong.mp3')">Another Song (3:15)</li>
-            </ul>
-            <p>Now Playing: <span id="nowPlayingTitle">None</span></p>
+    <h1>Seedlings</h1>
+    <div class="player-container">
+        <!-- The Engine (Hidden) -->
+        <audio id="globalPlayer" style="display:none;"></audio>
+
+        <!-- The Custom Interface -->
+        <div class="custom-ui">
+            <div class="track-info">
+                <span id="nowPlayingTitle">Select a track to begin</span>
+            </div>
+            
+            <div class="controls">
+                <button id="playPauseBtn" onclick="togglePlay()" disabled>Play</button>
+                <input type="range" id="seekSlider" value="0" max="100" step="1">
+            </div>
         </div>
+
+        <!-- The Track List -->
+        <ul class="track-list">
+            <li onclick="queueTrack('Spiritworld.wav')">🎵 Spiritworld</li>
+            <li onclick="queueTrack('AnotherSong.mp3')">🎵 Another Song</li>
+        </ul>
     </div>
+
+</div>
 </body>
 </html>
