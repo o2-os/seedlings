@@ -17,3 +17,31 @@ products.forEach(item => {
   // Toss it into the page
   shopGrid.appendChild(card);
 });
+
+async function handlePlay(fileName) {
+    const status = document.getElementById('statusMessage');
+    const player = document.getElementById('globalPlayer');
+    status.innerText = "Requesting secure link...";
+
+    try {
+        // Use your full function URL here
+        const funcUrl = "https://faas-nyc1-2ef2e6cc.doserverless.co";
+        
+        const response = await fetch(`${funcUrl}?fileName=${encodeURIComponent(fileName)}`);
+        const data = await response.json();
+
+        if (data.url) {
+            status.innerText = ""; // Clear errors
+            player.src = data.url;
+            player.play();
+            console.log("Success! Secure URL received.");
+        } else {
+            // This captures errors from your index.js 'catch' block
+            status.innerText = "Error from Bouncer: " + (data.error || "Unknown error");
+            console.error("Bouncer Error:", data);
+        }
+    } catch (err) {
+        status.innerText = "Network Error: Could not reach the Bouncer.";
+        console.error("Fetch Error:", err);
+    }
+}
