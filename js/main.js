@@ -14,32 +14,39 @@ if (shopGrid) { // Only run this if the element actually exists on the current p
     });
 }
 
-async function handlePlay(fileName) {
-    const status = document.getElementById('statusMessage');
-    const player = document.getElementById('globalPlayer');
-    status.innerText = "Requesting secure link...";
+const player = document.getElementById('globalPlayer');
+const nowPlayingTitle = document.getElementById('nowPlayingTitle');
+const funcUrl = "https://faas-nyc1-2ef2e6cc.doserverless.co";
 
+// Function to fetch the secure URL and load it into the player
+async function queueTrack(fileName) {
+    nowPlayingTitle.innerText = `Loading ${fileName}...`;
+    
     try {
-        // Use your full function URL here
-        const funcUrl = "https://faas-nyc1-2ef2e6cc.doserverless.co/api/v1/web/fn-fa14d4b3-aac1-4753-98dc-a13f0c4e721d/default/library-connect";
-        
         const response = await fetch(`${funcUrl}?fileName=${encodeURIComponent(fileName)}`);
         const data = await response.json();
 
         if (data.url) {
-            status.innerText = ""; // Clear errors
             player.src = data.url;
-            player.play();
-            console.log("Success! Secure URL received.");
+            player.play(); // Start playing immediately
+            nowPlayingTitle.innerText = fileName; // Update UI with current track
+            console.log("Player updated with secure stream.");
         } else {
-            // This captures errors from your index.js 'catch' block
-            status.innerText = "Error from Bouncer: " + (data.error || "Unknown error");
-            console.error("Bouncer Error:", data);
+            console.error("Bouncer error:", data.error);
+            nowPlayingTitle.innerText = "Error loading track.";
         }
     } catch (err) {
-        status.innerText = "Network Error: Could not reach the Bouncer.";
-        console.error("Fetch Error:", err);
+        console.error("Connection error:", err);
+        nowPlayingTitle.innerText = "Network error.";
     }
 }
 
-window.handlePlay = handlePlay;
+// Optional: Add event listeners for better UX
+player.addEventListener('error', (event) => {
+    console.error("Audio player error:", event.target.error.code);
+    nowPlayingTitle.innerText = "Playback error.";
+});
+
+// Since we have a 'queue' system now, we don't use window.handlePlay anymore:
+window.queueTrack = queueTrack; // Expose the new function globally
+

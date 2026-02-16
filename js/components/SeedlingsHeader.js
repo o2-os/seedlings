@@ -38,7 +38,7 @@ template.innerHTML = `
   </style>
   <header>
     <div class="logo">
-      <a style="text-decoration: none; color: #333" href="./index.html">    <img src="images|\seedlings.png" style="width: 7rem;" />
+      <a style="text-decoration: none; color: #333" href="./index.html">    <img src="images/seedlings.png" style="width: 7rem;" />
 
       </a>
       </div>
