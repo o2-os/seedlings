@@ -10,7 +10,7 @@ template.innerHTML = `
     }
 
     header {
-      background-color: #f9f9f3; /* Your requested background */
+      background-color: white; /* Your requested background */
       color: #333;             /* Dark text for contrast against white */
       padding: 1rem 2rem;
       display: flex;
