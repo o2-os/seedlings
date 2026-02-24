@@ -2,51 +2,207 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://www.paypal.com"></script>
-    <script type="module" src="./js/components/SeedlingsHeader.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="images/favicon_io/favicon-16x16.png">
+  <script type="module" src="./js/components/SeedlingsHeader.js"></script>
 </head>
 <body>
-    <seedlings-header></seedlings-header>
-    
-    <main id="product-content" style="max-width: 900px; margin: 80px auto; display: flex; gap: 40px; padding: 20px;">
-        <img id="p-img" src="" style="width: 50%; aspect-ratio: 1/1; object-fit: cover; background: #eee;">
-        <div style="flex: 1;">
-            <h1 id="p-name">Loading...</h1>
-            <p id="p-price" style="font-size: 1.5rem; margin: 10px 0; color: #444;"></p>
-            <hr>
-            <p id="p-desc" style="line-height: 1.6; color: #666; margin: 20px 0;"></p>
-            <button style="padding: 15px 40px; background: #000; color: #fff; border: none; cursor: pointer;">
-                Add to Cart
-            </button>
+  <seedlings-header></seedlings-header>
+
+  <main id="product-content" style="max-width: 900px; margin: 80px auto; display: flex; gap: 40px; padding: 20px;">
+
+    <img id="p-img" src="" style="width: 50%; aspect-ratio: 1/1; object-fit: cover; background: #eee;">
+
+    <div style="flex: 1;">
+      <h1 id="p-name">Loading...</h1>
+      <p id="p-price" style="font-size: 1.5rem; margin: 10px 0; color: #444;"></p>
+      <hr>
+      <p id="p-desc" style="line-height: 1.6; color: #666; margin: 20px 0;"></p>
+
+      <!-- Audio Preview Section (hidden until product loads) -->
+      <div id="preview-section" style="display:none; margin-bottom: 24px;">
+        <p style="font-size: 0.85rem; color: #999; margin-bottom: 4px;">PREVIEW</p>
+
+        <!-- Current track label (only visible for multi-track releases) -->
+        <p id="p-track-num" style="font-size: 0.8rem; color: #999; margin-bottom: 8px; min-height: 1em;"></p>
+
+        <!-- Hidden audio engine -->
+        <audio id="p-audio" style="display:none;"></audio>
+
+        <!-- Custom player controls -->
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <button id="p-play-btn" style="padding: 10px 20px; background: #000; color: #fff; border: none; cursor: pointer; border-radius: 4px;">
+            ▶ Play
+          </button>
+          <input type="range" id="p-seek" value="0" max="100" step="0.1"
+            style="flex: 1; cursor: pointer;">
+          <span id="p-time" style="font-size: 0.8rem; color: #888; white-space: nowrap;">0:00</span>
         </div>
-    </main>
 
-    <script type="module">
-        import { products } from './js/products.js';
+        <p id="p-status" style="font-size: 0.8rem; color: #aaa; margin-top: 6px; min-height: 1em;"></p>
+      </div>
 
-        // 1. Grab the ID from the URL (e.g., ?id=backpack)
-        const params = new URLSearchParams(window.location.search);
-        const productId = params.get('id');
+      <!-- Buy Button -->
+      <a id="p-buy-btn" href="#" target="_blank"
+        style="display:none; padding: 15px 40px; background: #000; color: #fff; text-decoration: none; cursor: pointer; margin-bottom: 12px; display: inline-block;">
+        Buy — <span id="p-buy-price"></span>
+      </a>
 
-        // 2. Find the product in your array
-        const item = products.find(p => p.id === productId);
+    </div>
+  </main>
 
-        // 3. Inject the data into the page
-        if (item) {
-            document.getElementById('p-name').innerText = item.name;
-            document.getElementById('p-price').innerText = item.price;
-            document.getElementById('p-desc').innerText = item.description;
-            document.getElementById('p-img').src = item.img;
-            document.title = `${item.name} | Seedlings`;
-        } else {
-            // Fallback if product doesn't exist
-            document.getElementById('product-content').innerHTML = `
-                <div style="text-align:center; width:100%;">
-                    <h2>Product not found</h2>
-                    <a href="index.html">Return to Shop</a>
-                </div>`;
+  <script type="module">
+    import { products } from './js/products.js';
+
+    const FUNC_URL = "https://faas-nyc1-2ef2e6cc.doserverless.co/api/v1/web/fn-fa14d4b3-aac1-4753-98dc-a13f0c4e721d/default/library-connect";
+
+    const params = new URLSearchParams(window.location.search);
+    const item = products.find(p => p.id === params.get('id'));
+
+    if (!item) {
+      document.getElementById('product-content').innerHTML = `
+        <div style="text-align:center; width:100%;">
+          <h2>Release not found</h2>
+          <a href="index.html">Back to Shop</a>
+        </div>`;
+    } else {
+
+      // --- Populate page ---
+      document.getElementById('p-name').innerText = item.name;
+      document.getElementById('p-price').innerText = item.price;
+      document.getElementById('p-desc').innerText = item.description;
+      document.getElementById('p-img').src = item.img;
+      document.title = `${item.name} | Seedlings`;
+
+      // --- Buy button ---
+      if (item.buyUrl && item.buyUrl !== "#") {
+        const buyBtn = document.getElementById('p-buy-btn');
+        buyBtn.href = item.buyUrl;
+        buyBtn.style.display = "inline-block";
+        document.getElementById('p-buy-price').innerText = item.price;
+      }
+
+      // --- Audio preview ---
+      if (item.previewTrack) {
+
+        // Normalize: single string or array both work
+        const tracks = Array.isArray(item.previewTrack)
+          ? item.previewTrack
+          : [item.previewTrack];
+
+        let currentIndex = 0;
+        let loaded = false;
+
+        const section  = document.getElementById('preview-section');
+        const player   = document.getElementById('p-audio');
+        const playBtn  = document.getElementById('p-play-btn');
+        const seek     = document.getElementById('p-seek');
+        const timer    = document.getElementById('p-time');
+        const status   = document.getElementById('p-status');
+        const trackNum = document.getElementById('p-track-num');
+
+        section.style.display = "block";
+
+        function formatTime(s) {
+          const m = Math.floor(s / 60);
+          const sec = Math.floor(s % 60).toString().padStart(2, '0');
+          return `${m}:${sec}`;
         }
-    </script>
+
+        function updateTrackLabel() {
+          if (tracks.length > 1) {
+            // Strip folder path and extension for a clean display name
+            const raw = tracks[currentIndex]
+              .split('/').pop()
+              .replace(/\.[^.]+$/, '');
+            trackNum.innerText = `Track ${currentIndex + 1} of ${tracks.length} — ${raw}`;
+          } else {
+            trackNum.innerText = "";
+          }
+        }
+
+        async function loadTrack(index) {
+          status.innerText = "Loading...";
+          playBtn.disabled = true;
+          seek.value = 0;
+          timer.innerText = "0:00";
+          loaded = false;
+
+          try {
+            const res  = await fetch(`${FUNC_URL}?fileName=${encodeURIComponent(tracks[index])}`);
+            const data = await res.json();
+            if (!data.url) throw new Error(data.error || "No URL returned");
+            player.src = data.url;
+            loaded = true;
+            status.innerText = "";
+            playBtn.disabled = false;
+            updateTrackLabel();
+          } catch (err) {
+            status.innerText = "Could not load track.";
+            playBtn.disabled = false;
+            console.error(err);
+          }
+        }
+
+        async function playTrack(index) {
+          await loadTrack(index);
+          if (loaded) {
+            player.play();
+            playBtn.innerText = "⏸ Pause";
+          }
+        }
+
+        // Pre-load first track on page load (so play is instant)
+        loadTrack(0);
+
+        // Play / pause toggle
+        playBtn.onclick = () => {
+          if (!loaded) return;
+          if (player.paused) {
+            player.play();
+            playBtn.innerText = "⏸ Pause";
+          } else {
+            player.pause();
+            playBtn.innerText = "▶ Play";
+          }
+        };
+
+        // Seek bar updates as audio plays
+        player.ontimeupdate = () => {
+          if (!player.duration) return;
+          seek.value = (player.currentTime / player.duration) * 100;
+          timer.innerText = `${formatTime(player.currentTime)} / ${formatTime(player.duration)}`;
+        };
+
+        // User scrubs the seek bar
+        seek.oninput = () => {
+          if (player.duration) {
+            player.currentTime = (seek.value / 100) * player.duration;
+          }
+        };
+
+        // Auto-advance when a track ends
+        player.onended = () => {
+          if (currentIndex < tracks.length - 1) {
+            // Move to next track and play it
+            currentIndex++;
+            playTrack(currentIndex);
+          } else {
+            // Last track finished — reset to beginning
+            playBtn.innerText = "▶ Play";
+            seek.value = 0;
+            timer.innerText = "0:00";
+            currentIndex = 0;
+            loadTrack(0); // pre-load first track again
+          }
+        };
+
+        // No right-click on the player area
+        section.addEventListener('contextmenu', e => e.preventDefault());
+      }
+    }
+  </script>
 </body>
 </html>
