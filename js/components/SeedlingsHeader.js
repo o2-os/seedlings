@@ -44,11 +44,11 @@ template.innerHTML = `
       </div>
     <nav>
       <ul>
-        <li><a href="#">Tapes</a></li>
-        <li><a href="#">Mxz</a></li>
-        <li><a href="https://datafruits.fm/shows/counterbalance">Radio</a></li>
-        <li><a href="shop.html">Shop</a></li>
-        <li><a href="https://www.discogs.com/seller/abstractgarden/profile">Discogs Store</a></li>
+        <li><a href="#">tapes</a></li>
+        <li><a href="#">mxz</a></li>
+        <li><a href="https://datafruits.fm/shows/counterbalance">radio</a></li>
+        <li><a href="shop.html">shop</a></li>
+        <li><a href="https://www.discogs.com/seller/abstractgarden/profile">discogs store</a></li>
       </ul>
     </nav>
   </header>

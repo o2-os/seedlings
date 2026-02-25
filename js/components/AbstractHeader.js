@@ -43,10 +43,12 @@ template.innerHTML = `
       </div>
     <nav>
       <ul>
-        <li><a href="https://spiralingpress.com">press</a></li>
+        <!-- <li><a href="#>press</a></li> -->
         <li><a href="seedlings.html">music</a></li>
         <li><a href="shop.html">shop</a></li>
         <li><a href="https://www.ebay.com/usr/abstractvintage">vintage</a></li>
+        <li><a href="https://www.discogs.com/seller/abstractgarden/profile">discogs store</a></li>
+
       </ul>
     </nav>
   </header>

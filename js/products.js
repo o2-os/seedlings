@@ -16,23 +16,26 @@ export const products = [
     description: "",
     img: "images/IMG_0324.png", 
     // Single file — one combined mix
-    previewTrack: "previews/o2.os - Start Where You Are Mixed Side A.mp3",
-    buyUrl: "#",
-    downloadable: true
-  },
-  {
-    id: "seedling002",
-    name: "Some Multi-Track Release",
-    price: "$10",
-    description: "",
-    img: "images/seedling002-cover.jpg",
-    // Multiple files — auto-advances track by track
     previewTrack: [
-      "previews/seedling002-track01.mp3",
-      "previews/seedling002-track02.mp3",
-      "previews/seedling002-track03.mp3"
+      "previews/o2.os - Start Where You Are Mixed Side A.mp3",
+      "previews/o2.os - Start Where You Are Mixed Side B.mp3",
     ],
     buyUrl: "#",
     downloadable: true
-  }
+  },
+  // {
+  //   id: "seedling002",
+  //   name: "Some Multi-Track Release",
+  //   price: "$10",
+  //   description: "",
+  //   img: "images/seedling002-cover.jpg",
+  //   // Multiple files — auto-advances track by track
+  //   previewTrack: [
+  //     "previews/seedling002-track01.mp3",
+  //     "previews/seedling002-track02.mp3",
+  //     "previews/seedling002-track03.mp3"
+  //   ],
+  //   buyUrl: "#",
+  //   downloadable: true
+  // }
 ];

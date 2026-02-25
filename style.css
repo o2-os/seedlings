@@ -136,6 +136,7 @@ li {
     border-bottom: 1px solid #ccc;
     cursor: pointer; /* Makes it look clickable */
     transition: background-color 0.2s;
+    color:black;
 }
 
 li:hover {
