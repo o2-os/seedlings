@@ -44,8 +44,10 @@ template.innerHTML = `
       </div>
     <nav>
       <ul>
-        <li><a href="#">tapes</a></li>
-        <li><a href="#">mxz</a></li>
+        
+        <!-- <li><a href="#">tapes</a></li> -->
+        <!-- <li><a href="#">mxz</a></li> -->
+        
         <li><a href="https://datafruits.fm/shows/counterbalance">radio</a></li>
         <li><a href="shop.html">shop</a></li>
         <li><a href="https://www.discogs.com/seller/abstractgarden/profile">discogs store</a></li>

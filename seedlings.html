@@ -16,28 +16,6 @@
     <!-- <img style="width: 75%;" src="images/seedlings.png"> -->
     <div class="content">
         <div id="feed-container"></div>
-        <div class="player-container">
-            <!-- The Engine (Hidden) -->
-            <audio id="globalPlayer" style="display:none;"></audio>
-
-            <!-- The Custom Interface -->
-            <div class="custom-ui">
-                <div class="track-info">
-                    <span id="nowPlayingTitle">Select a track</span>
-                </div>
-                
-                <div class="controls">
-                    <button id="playPauseBtn" onclick="togglePlay()" disabled>Play</button>
-                    <input type="range" id="seekSlider" value="0" max="100" step="1">
-                </div>
-            </div>
-
-            <!-- The Track List -->
-            <ul class="track-list">
-                <li onclick="queueTrack('Spiritworld.wav')">🎵 Spiritworld</li>
-                <!-- <li onclick="queueTrack('AnotherSong.mp3')">🎵 Another Song</li> -->
-            </ul>
-        </div>
     </div>
 </body>
 </html>

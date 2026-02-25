@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>seedlings</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="images\favicon_io\favicon-16x16.png">
+    <style>
+    </style>
+    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./js/components/SeedlingsHeader.js"></script>
+</head>
+<body>
+    <seedlings-header></seedlings-header>
+    <div class="content">
+        <div id="feed-container"></div>
+        <div class="player-container">
+            <!-- The Engine (Hidden) -->
+            <audio id="globalPlayer" style="display:none;"></audio>
+
+            <!-- The Custom Interface -->
+            <div class="custom-ui">
+                <div class="track-info">
+                    <span id="nowPlayingTitle">Select a track</span>
+                </div>
+                
+                <div class="controls">
+                    <button id="playPauseBtn" onclick="togglePlay()" disabled>Play</button>
+                    <input type="range" id="seekSlider" value="0" max="100" step="1">
+                </div>
+            </div>
+
+            <!-- The Track List -->
+            <ul class="track-list">
+                <li onclick="queueTrack('Spiritworld.wav')">🎵 Spiritworld</li>
+                <!-- <li onclick="queueTrack('AnotherSong.mp3')">🎵 Another Song</li> -->
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
