@@ -4,7 +4,7 @@ export const products = [
     name: "New Years Post Card",
     price: "Free",
     description: "Happy New Year!",
-    img: "./images/IMG_1319.jpg",
+    img: "images/IMG_1319.png",
     previewTrack: null,
     buyUrl: null,
     downloadable: false
@@ -14,7 +14,7 @@ export const products = [
     name: "o2.os - Start Where You Are",
     price: "$8",
     description: "",
-    img: "./images/seedling001-cover.jpg",
+    img: "images/IMG_0324.png", 
     // Single file — one combined mix
     previewTrack: "previews/o2.os - Start Where You Are Mixed Side A.mp3",
     buyUrl: "#",
@@ -25,7 +25,7 @@ export const products = [
     name: "Some Multi-Track Release",
     price: "$10",
     description: "",
-    img: "./images/seedling002-cover.jpg",
+    img: "images/seedling002-cover.jpg",
     // Multiple files — auto-advances track by track
     previewTrack: [
       "previews/seedling002-track01.mp3",
