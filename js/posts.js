@@ -8,13 +8,13 @@
 
 export const posts = [
 
-  {
-    type: "image",
-    date: "2026-02-25",
-    title: "Blissadness 12",
-    // body: "new mix available from Bluets for the Blissadness series / latọna ibi. featuring forthcoming seedlings, unreleased demos, and other ideas in orbit",
-    img: "images/латона 12j.jpg",
-    linkText: "Listen",
-    linkUrl: "https://soundcloud.com/ijinle/bluets-blissadness-12?in=ijinle/sets/blissadness"
-  },
+  // {
+  //   type: "image",
+  //   date: "2026-02-25",
+  //   title: "Blissadness 12",
+  //   // body: "new mix available from Bluets for the Blissadness series / latọna ibi. featuring forthcoming seedlings, unreleased demos, and other ideas in orbit",
+  //   img: "images/латона 12j.jpg",
+  //   // linkText: "Listen",
+  //   linkUrl: "https://soundcloud.com/ijinle/bluets-blissadness-12?in=ijinle/sets/blissadness"
+  // },
 ];
